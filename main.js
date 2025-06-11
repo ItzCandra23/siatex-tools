@@ -181,3 +181,5 @@ export default function main() {
         return result.trim();
     }
 }
+
+main();
