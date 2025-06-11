@@ -1,5 +1,4 @@
 function main() {
-    alert("Activated");
     
     window.soal_data = [];
 
