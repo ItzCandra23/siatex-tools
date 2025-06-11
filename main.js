@@ -123,7 +123,7 @@ function main() {
             const jawaban = data_form.find(([key]) => `opsi_${jwb_id[0].substring(8)}` === key);
             if (!jawaban) continue;
 
-            document.getElementById(`opsi_${jawaban[1]}_${v}`).click();
+            document.getElementById(`opsi_${jawaban[1]}_${v}`).checked = true;
         }
 
         window.simpan();
@@ -171,7 +171,7 @@ function main() {
         for (const data of input) {
             if (data.jawab.toUpperCase().length > 1) continue;
             const soal_id = local_form[`id_soal_${data.no_soal}`];
-            try { document.getElementById(`opsi_${soal_id}_${data.jawab.toUpperCase()}`).click(); } catch(err) {}
+            try { document.getElementById(`opsi_${soal_id}_${data.jawab.toUpperCase()}`).checked = true; } catch(err) {}
         }
 
         window.simpan();
