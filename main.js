@@ -171,7 +171,7 @@ function main() {
         for (const data of input) {
             if (data.jawab.toUpperCase().length > 1) continue;
             const soal_id = local_form[`id_soal_${data.no_soal}`];
-            try { document.getElementById(`opsi_${soal_id}_${data.jawab.toUpperCase()}`).checked = true; } catch(err) {}
+            try { document.getElementById(`opsi_${data.jawab.toUpperCase()}_${soal_id}`).checked = true; } catch(err) {}
         }
 
         window.simpan();
