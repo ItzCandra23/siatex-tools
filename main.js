@@ -169,9 +169,11 @@ function main() {
         if (!input) return;
 
         for (const data of input) {
+            try {
             if (data.jawab.toUpperCase().length > 1) continue;
             const soal_id = local_form[`id_soal_${data.no_soal}`];
-            try { document.getElementById(`opsi_${data.jawab.toUpperCase()}_${soal_id}`).checked = true; } catch(err) {}
+            document.getElementById(`opsi_${data.jawab.toUpperCase()}_${soal_id}`).checked = true; 
+            } catch(err) {}
         }
 
         window.simpan();
