@@ -122,7 +122,7 @@ function main() {
             const jawaban = data_form.find(([key]) => `opsi_${jwb_id[0].substring(8)}` === key);
             if (!jawaban) continue;
 
-            document.querySelector("input#").select();
+            document.querySelector(`input#opsi_${jawaban[1]}_${v}`).select();
         }
 
         window.simpan();
