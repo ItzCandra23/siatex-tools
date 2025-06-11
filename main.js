@@ -122,7 +122,7 @@ function main() {
             const jawaban = data_form.find(([key]) => `opsi_${jwb_id[0].substring(8)}` === key);
             if (!jawaban) continue;
 
-            document.querySelector(`input#opsi_${jawaban[1]}_${v}`).select();
+            document.querySelector(`input#opsi_${jawaban[1]}_${v}`).click();
         }
 
         window.simpan();
@@ -160,6 +160,20 @@ function main() {
         }
 
         navigator.clipboard.writeText(JSON.stringify(data_simpan, null, 2));
+    }
+
+    function TerapkanAI() {
+        const local_form = window.getFormData($("#_form"));
+        const input = JSON.parse(prompt("Masukkan Jawaban [AI]:"));
+        if (!input) return;
+
+        for (const data of input) {
+            if (data.jawab.toUpperCase().length > 1) continue;
+            const soal_id = local_form[`id_soal_${data.no_soal}`];
+            try { document.querySelector(`input#opsi_${soal_id}_${data.jawab.toUpperCase()}`).click(); } catch(err) {}
+        }
+
+        window.simpan();
     }
 
     function extractTextAndImages(el) {
