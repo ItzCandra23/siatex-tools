@@ -9,7 +9,8 @@ function main() {
         { name: "Salin(LastHalf)", onclick: SalinLastHalf },
         { name: "SalinFormData", onclick: SalinFormData },
         { name: "TerapkanFormData", onclick: TerapkanFormData },
-        { name: "BandingkanFormData", onclick: BandingkanFormData }
+        { name: "BandingkanFormData", onclick: BandingkanFormData },
+        { name: "Terapkan[AI]", onclick: TerapkanAI }
     ].forEach(({ name, onclick }) => {
         $("<div>")
             .addClass("btn btn-info")
