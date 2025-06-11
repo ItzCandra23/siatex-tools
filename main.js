@@ -153,7 +153,8 @@ function main() {
             if (!jawaban) continue;
 
             data_simpan.push({
-                no: k.substring(8),
+                id: v,
+                no_soal: k.substring(8),
                 jawab: jawaban[1]
             });
         }
