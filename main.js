@@ -10,6 +10,8 @@ function main() {
         { name: "SalinFormData", onclick: SalinFormData },
         { name: "TerapkanFormData", onclick: TerapkanFormData },
         { name: "BandingkanFormData", onclick: BandingkanFormData },
+        { name: "SalinSemua[Promp]", onclick: SalinSemuaDenganPromp },
+        { name: "SalinPrompAI", onclick: SalinPrompAI },
         { name: "Terapkan[AI]", onclick: TerapkanAI }
     ].forEach(({ name, onclick }) => {
         $("<div>")
@@ -161,6 +163,22 @@ function main() {
         }
 
         navigator.clipboard.writeText(JSON.stringify(data_simpan, null, 2));
+    }
+
+    function SalinSemuaDenganPromp() {
+        if (!window.soal_data.length) {
+            alert("Data soal belum tersedia!");
+            return;
+        }
+        const result = `Jawab dengan format JSON {no_soal: number, jawab: "A","B","C","D","E","Skipped"}[]\n\nSetiap soal tidak memiliki hubungan dengan soal lainnya. Jika pertanyaan tidak jelas atai ragu agau tidak ada jawaban atau meminta gambar tetapi tidak ada gambarnya tinggal pilih skip\n\n`+window.soal_data
+            .map((s, i) => soalObjectToText(s, i + 1))
+            .join("\n\n");
+        navigator.clipboard.writeText(result);
+    }
+
+    function SalinPrompAI() {
+        const result = `Jawab dengan format JSON {no_soal: number, jawab: "A","B","C","D","E","Skipped"}[]\n\nSetiap soal tidak memiliki hubungan dengan soal lainnya. Jika pertanyaan tidak jelas atai ragu agau tidak ada jawaban atau meminta gambar tetapi tidak ada gambarnya tinggal pilih skip\n\n`;
+        navigator.clipboard.writeText(result);
     }
 
     function TerapkanAI() {
