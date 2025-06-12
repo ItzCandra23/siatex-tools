@@ -11,7 +11,7 @@ function main() {
         { name: "TerapkanFormData", onclick: TerapkanFormData },
         { name: "BandingkanFormData", onclick: BandingkanFormData },
         { name: "SalinSemua[Promp]", onclick: SalinSemuaDenganPromp },
-        { name: "SalinPrompAI", onclick: SalinPrompAI },
+        { name: "SalinPromp[AI]", onclick: SalinPrompAI },
         { name: "Terapkan[AI]", onclick: TerapkanAI }
     ].forEach(({ name, onclick }) => {
         $("<div>")
