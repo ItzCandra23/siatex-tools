@@ -12,7 +12,8 @@ function main() {
         { name: "BandingkanFormData", onclick: BandingkanFormData },
         { name: "SalinSemua[Promp]", onclick: SalinSemuaDenganPromp },
         { name: "SalinPromp[AI]", onclick: SalinPrompAI },
-        { name: "Terapkan[AI]", onclick: TerapkanAI }
+        { name: "Terapkan[AI]", onclick: TerapkanAI },
+        { name: "TerapkanMulti[AI]", onclick: TerapkanMultiAI }
     ].forEach(({ name, onclick }) => {
         $("<div>")
             .addClass("btn btn-info")
@@ -195,6 +196,35 @@ function main() {
         }
 
         window.simpan();
+    }
+
+    function TerapkanMultiAI() {
+        const local_form = window.getFormData($("#_form"));
+        const input = JSON.parse("["+prompt("Masukkan Jawaban [AI]:")+"]");
+        if (!input || !input.length) return;
+
+        for (const data of input[0]) {
+            try {
+            if (data.jawab.toUpperCase().length > 1) continue;
+            if (!isJawabanSamaUntukNoSoal(input, data.no_soal)) continue;
+            const soal_id = local_form[`id_soal_${data.no_soal}`];
+            document.getElementById(`opsi_${data.jawab.toUpperCase()}_${soal_id}`).checked = true; 
+            } catch(err) {}
+        }
+
+        window.simpan();
+    }
+
+    function isJawabanSamaUntukNoSoal(data, noSoal) {
+  const jawaban = data
+    .flat()
+    .filter(item => item.no_soal === noSoal)
+    .map(item => item.jawab);
+
+  if (jawaban.length === 0) return false;
+
+  const pertama = jawaban[0];
+  return jawaban.every(j => j === pertama);
     }
 
     function extractTextAndImages(el) {
