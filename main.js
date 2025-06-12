@@ -200,8 +200,10 @@ function main() {
 
     function TerapkanMultiAI() {
         const local_form = window.getFormData($("#_form"));
-        const input = JSON.parse("["+prompt("Masukkan Jawaban [AI]:")+"]");
+        const input = JSON.parse("["+prompt("Masukkan Jawaban [1 - 2 AI]:")+"]");
         if (!input || !input.length) return;
+        const input2 = JSON.parse("["+prompt("Masukkan Jawaban [0 - 2 AI]:")+"]");
+        if (input2 && input2.length) input.push(...input2);
 
         for (const data of input[0]) {
             try {
